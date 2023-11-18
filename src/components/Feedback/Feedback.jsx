@@ -7,29 +7,57 @@ export class Feedback extends Component {
     bad: 0,
   };
 
-  handleGood(event) {
-    console.log("Good button was clicked!", event);
-  }
+  handleGood = () => {
+    this.setState({ good: this.state.good + 1 });
+  };
 
-  handleNeutral(event) {
-    console.log("Neutral button was clicked!", event);
-  }
+  handleNeutral = () => {
+    this.setState({ neutral: this.state.neutral + 1 });
+  };
 
-  handleBad(event) {
-    console.log("Bad button was clicked!", event);
-  }
+  handleBad = () => {
+    this.setState({ bad: this.state.bad + 1 });
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    return Math.round(
+      (this.state.good /
+        (this.state.good + this.state.neutral + this.state.bad)) *
+        100
+    );
+  };
 
   render() {
     return (
       <>
         <h1>Please leave feedback</h1>
-        <button onClick={this.handleGood}>Good</button>
-        <button onClick={this.handleNeutral}>Neutral</button>
-        <button onClick={this.handleBad}>Bad</button>
+        <div>
+          <button onClick={this.handleGood}>Good</button>
+          <button onClick={this.handleNeutral}>Neutral</button>
+          <button onClick={this.handleBad}>Bad</button>
+        </div>
         <h2>Statistics</h2>
-        <p>Good: {this.state.good}</p>
-        <p>Neutral: {this.state.neutral}</p>
-        <p>Bad: {this.state.bad}</p>
+        <p>
+          Good: <strong>{this.state.good}</strong>
+        </p>
+        <p>
+          Neutral: <strong>{this.state.neutral}</strong>
+        </p>
+        <p>
+          Bad: <strong>{this.state.bad}</strong>
+        </p>
+        <p>
+          Total:{" "}
+          <strong>
+            {this.state.good + this.state.neutral + this.state.bad}
+          </strong>
+        </p>
+        {isNaN(this.countPositiveFeedbackPercentage()) ? null : (
+          <p>
+            Positive feedback:{" "}
+            <strong>{this.countPositiveFeedbackPercentage()}%</strong>
+          </p>
+        )}
       </>
     );
   }
