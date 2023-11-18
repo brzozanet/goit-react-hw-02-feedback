@@ -19,6 +19,10 @@ export class Feedback extends Component {
     this.setState({ bad: this.state.bad + 1 });
   };
 
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+
   countPositiveFeedbackPercentage = () => {
     return Math.round(
       (this.state.good /
@@ -47,10 +51,7 @@ export class Feedback extends Component {
           Bad: <strong>{this.state.bad}</strong>
         </p>
         <p>
-          Total:{" "}
-          <strong>
-            {this.state.good + this.state.neutral + this.state.bad}
-          </strong>
+          Total: <strong>{this.countTotalFeedback()}</strong>
         </p>
         {isNaN(this.countPositiveFeedbackPercentage()) ? null : (
           <p>
