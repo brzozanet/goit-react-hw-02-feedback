@@ -1,7 +1,9 @@
+import { Feedback } from "./Feedback/Feedback";
+
 export const App = () => {
   return (
     <div className="container">
-      <p>Hello World!</p>
+      <Feedback message="Hello World!!" />
     </div>
   );
 };
