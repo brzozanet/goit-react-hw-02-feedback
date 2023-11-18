@@ -32,7 +32,6 @@ export class App extends Component {
     return (
       <div className={css.App}>
         <FeedbackOptions
-          // options={["Good", "Neutral", "Bad"]}
           options={Object.keys(this.state)}
           onLeaveFeedback={this.changeState}
         />
