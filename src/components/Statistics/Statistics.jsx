@@ -9,8 +9,8 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    <>
-      <h2>Statistics</h2>
+    <div className={css.Statistics}>
+      <h2 className={css.Statistics__title}>Statistics</h2>
       <p className={css.Statistics}>
         Good: <strong>{good}</strong>
       </p>
@@ -28,7 +28,7 @@ export const Statistics = ({
           Positive feedback: <strong>{positivePercentage}%</strong>
         </p>
       )}
-    </>
+    </div>
   );
 };
 
