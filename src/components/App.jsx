@@ -23,7 +23,7 @@ export class App extends Component {
     );
   };
 
-  changeState = name => {
+  onLeaveFeedback = name => {
     this.setState(prevState => ({
       [name]: prevState[name] + 1,
     }));
@@ -34,7 +34,7 @@ export class App extends Component {
       <div className={css.App}>
         <FeedbackOptions
           options={Object.keys(this.state)}
-          onLeaveFeedback={this.changeState}
+          onLeaveFeedback={this.onLeaveFeedback}
         />
 
         {this.countTotalFeedback() === 0 ? (
